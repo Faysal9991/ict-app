@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -8,6 +9,26 @@ final List<String> imgList = [
   'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
   'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
   'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
+];
+List<Color> btnColor=[
+  Color(0xff01579b),
+  Color(0xff0277bd),
+  Color(0xff0288d1),
+  Color(0xff039be5),
+  Color(0xff03a9f4),
+  Color(0xff29b6f6),
+  Color(0xff4fc3f7),
+  Color(0xff81d4fa)
+];
+List<String>courselist=[
+"১	ওয়েব ডিজাইন এন্ড ডেভলপমেন্ট কোর্স	",
+"২	ওয়েব এপ্লিকেশন ডেভলপমেন্ট কোর্স",
+"৩	র্সাচ ইন্জিন অপটিমাইজেশন (এইও) কোর্স	",
+"৪	ই-কর্মাস, এম কর্মাস ,এফ-কর্মাস কোর্স	",
+"৫	ওর্য়াডপ্রেসে ডিজাইন কোর্স	",
+"৬	এনডয়েড এপ্লিকেশন ডেভলপমেন্ট কোর্স",
+"৭	এফিলেট মাকেটিং কোর্স ",
+"৮	সফটওয়্যার ডেভলপমেন্ট কোর্স	"
 ];
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -24,12 +45,15 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       drawer: Drawer(),
       appBar: AppBar(
-        backgroundColor: Color(0xff1a5276),
+        backgroundColor: Color(0xff01579b),
         centerTitle: true,
-        title: Text("Home",style: GoogleFonts.oswald(fontSize: width*0.1),
+        title: Text("Home",style: GoogleFonts.oswald(fontSize: width*0.09),
         ),
         actions: [
-           Icon(Icons.search,size: width*0.09,color: Colors.white,),
+           Padding(
+             padding: const EdgeInsets.only(right: 15),
+             child: Icon(Icons.search,size: width*0.09,color: Colors.white,),
+           ),
       ]
       ),
       body: Column(
@@ -50,9 +74,40 @@ class _HomePageState extends State<HomePage> {
                 ))
                     .toList(),
               )),
-          Container(
+        Expanded(
+            child:
+            ListView.builder(
+                itemCount: courselist.length,
+                itemBuilder: (context, index){
+                  return InkWell(
+                    onTap: (){
 
-          )
+                      if(index==0){
+                        // Navigator.push(context, MaterialPageRoute
+                        //   (builder: (context)=> ));
+                      }
+                      else if(index==1){
+                        // Navigator.push(context, MaterialPageRoute
+                        //   (builder: (context)=> ));
+                      }
+                      else if(index==2){
+                        // Navigator.push(context, MaterialPageRoute
+                        //   (builder: (context)=> ));
+                      }
+
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: btnColor[index],
+                          borderRadius: BorderRadius.only(topLeft: Radius.circular(30), bottomRight: Radius.circular(30))
+                      ),
+                      height: 50,
+                      child: Center(child: Text(courselist[index])),
+                    ),
+                  );
+                }
+            )
+        )
         ],
       ),
     );
